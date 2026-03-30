@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Johan Amezcua — Soporte Técnico & Desarrollo · Linares, N.L.',
+  title: 'Amezcua — Soporte Técnico & Desarrollo · Linares, N.L.',
   description: 'Soporte técnico, mantenimiento de equipos y soluciones digitales para negocios en Linares, Nuevo León. Diagnóstico gratis por WhatsApp.',
   keywords: 'soporte técnico Linares, reparación computadoras Linares, desarrollo software Linares',
   openGraph: {
