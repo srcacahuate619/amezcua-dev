@@ -11,7 +11,7 @@ export default function Footer() {
         © 2026 Johan Amezcua · Linares, Nuevo León
       </p>
       <p style={{ fontSize: '0.8rem', color: 'rgba(245,242,236,0.3)' }}>
-        Hecho con <span style={{ color: 'var(--accent)' }}>♥</span> en casa
+        Diseño y código propios · Linares, Nuevo León
       </p>
     </footer>
   )

@@ -17,12 +17,12 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Amezcua — Soporte Técnico & Desarrollo · Linares, N.L.',
-  description: 'Soporte técnico, mantenimiento de equipos y soluciones digitales para negocios en Linares, Nuevo León. Diagnóstico gratis por WhatsApp.',
-  keywords: 'soporte técnico Linares, reparación computadoras Linares, desarrollo software Linares',
+  title: 'Johan Amezcua — Implementador de IA · Linares, N.L.',
+  description: 'Implemento inteligencia artificial y software a la medida para negocios reales: automatización, páginas web, aplicaciones de escritorio y sistemas que trabajan solos. Linares, Nuevo León.',
+  keywords: 'implementación IA Linares, automatización con IA, desarrollo de software Linares, páginas web con IA',
   openGraph: {
-    title: 'Johan Amezcua — Soporte Técnico & Desarrollo · Linares, N.L.',
-    description: '¿Tu computadora está lenta? Diagnóstico gratis por WhatsApp.',
+    title: 'Johan Amezcua — Implementador de IA',
+    description: 'Automatizo procesos con inteligencia artificial. Proyectos reales, resultados reales.',
     locale: 'es_MX',
     type: 'website',
   },
@@ -31,7 +31,31 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${syne.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'LocalBusiness',
+              name: 'Johan Amezcua — Implementador de IA',
+              description: 'Implemento IA, chatbots, agentes y software a la medida para negocios. IA local y en la nube.',
+              areaServed: 'Linares, Nuevo León, México',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Linares',
+                addressRegion: 'Nuevo León',
+                addressCountry: 'MX',
+              },
+              telephone: '+52 821 111 0863',
+              url: 'https://amezcua-dev.vercel.app',
+              priceRange: '$$',
+              knowsAbout: ['Inteligencia Artificial', 'Chatbots', 'Agentes de IA', 'IA local', 'Automatización de procesos'],
+            }),
+          }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

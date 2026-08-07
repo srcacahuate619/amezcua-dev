@@ -1,104 +1,178 @@
+/* Hallmark · section: services-index · genre: atmospheric · theme: existing (dark+lime) */
 'use client'
 
-const services = [
+import { useState } from 'react'
+import { CpuBolt, Flask, Desktop, ChartBarTrendUp, CodeSquare, Globe } from 'reicon-react'
+import type { IconComponent } from 'reicon-react'
+
+type Service = {
+  Icon: IconComponent
+  title: string
+  desc: string
+  badge: string
+}
+
+const services: Service[] = [
   {
-    icon: '🖥️',
-    title: 'Soporte técnico',
-    desc: 'Diagnóstico, reparación y ensamblado de computadoras. Atención presencial en Linares.',
-    badge: 'Rápido · Local',
+    Icon: CpuBolt,
+    title: 'Chatbots con IA',
+    desc: 'Atienden a tus clientes en WhatsApp y web a toda hora: responden preguntas, toman pedidos, agendan citas. Nunca duermen, nunca se enojan, nunca dejan un mensaje sin responder.',
+    badge: 'WhatsApp · Web · 24/7',
   },
   {
-    icon: '⚙️',
-    title: 'Mantenimiento preventivo',
-    desc: 'Limpieza de hardware, actualización de sistemas, respaldos y seguridad para que tu equipo no falle en el peor momento.',
-    badge: 'Preventivo · Garantía',
+    Icon: Flask,
+    title: 'Agentes de IA',
+    desc: 'No solo responden: ejecutan. Leen tus correos, generan reportes, mueven datos entre tus sistemas, cotizan automáticamente. Tareas completas de punta a punta, sin tu intervención.',
+    badge: 'Autonomía operativa',
   },
   {
-    icon: '🌐',
-    title: 'Páginas web y tiendas',
-    desc: 'Sitios web profesionales, landing pages y tiendas en línea. Diseño moderno, rápido y con dominio propio.',
-    badge: 'Next.js · Vercel',
+    Icon: Desktop,
+    title: 'IA local para datos sensibles',
+    desc: 'Modelos que corren dentro de tu propia computadora o red. Tus datos no salen a la nube: ideal para despachos legales, inventarios, salud e información confidencial.',
+    badge: 'Offline · Privacidad total',
   },
   {
-    icon: '🤖',
-    title: 'Automatización con IA',
-    desc: 'Convierte tareas manuales repetitivas en procesos automáticos. Reportes, inventario, cotizaciones, atención al cliente.',
-    badge: 'Diferenciador clave',
+    Icon: ChartBarTrendUp,
+    title: 'IA en la nube',
+    desc: 'Cuando conviene el poder de los modelos grandes (Gemini, Claude, DeepSeek): para tareas que sí necesitan un motor pesado y donde la información puede viajar.',
+    badge: 'Gemini · Claude · DeepSeek',
   },
   {
-    icon: '📊',
-    title: 'Sistemas a la medida',
-    desc: 'Software hecho para tu negocio: control de inventario, citas, cotizadores, dashboards. Sin pagar licencias eternas.',
+    Icon: CodeSquare,
+    title: 'Digitalización de procesos',
+    desc: 'Sistemas a la medida que reemplazan lo que hoy haces en Excel y cuadernos: POS, control de inventario, citas, facturación, gestión de clientes.',
     badge: 'Python · TypeScript',
   },
   {
-    icon: '🔒',
-    title: 'Seguridad y redes',
-    desc: 'Configuración de redes seguras, respaldo en la nube, recuperación de datos y protección de información del negocio.',
-    badge: 'Local · Confiable',
+    Icon: Globe,
+    title: 'Páginas web con IA integrada',
+    desc: 'Sitios que no son folleto: llevan el chatbot adentro, toman pedidos, muestran catálogos, derivan a WhatsApp. Tu página trabaja mientras duermes.',
+    badge: 'Next.js · Vercel',
   },
 ]
 
 export default function Services() {
   return (
     <section id="servicios" style={{ padding: '6rem 2rem', maxWidth: '1000px', margin: '0 auto' }}>
+      <style>{`
+        .sv-row {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          padding: 2rem;
+        }
+        .sv-row.is-active .sv-iconbox { border-color: var(--accent); }
+        .sv-lead {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          flex-shrink: 0;
+        }
+        .sv-index {
+          font-family: var(--font-head);
+          font-size: 0.75rem;
+          color: var(--accent);
+          font-weight: 700;
+          width: 3rem;
+          flex-shrink: 0;
+        }
+        .sv-iconbox {
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .sv-content { flex: 1; min-width: 0; }
+        .sv-title {
+          font-family: var(--font-head);
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          overflow-wrap: anywhere;
+        }
+        .sv-desc {
+          font-size: 0.875rem;
+          color: rgba(245,242,236,0.55);
+          max-width: 520px;
+          line-height: 1.7;
+        }
+        .sv-side {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          flex-shrink: 0;
+          flex-wrap: wrap;
+        }
+        .sv-badge {
+          display: inline-block;
+          font-size: 0.72rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 0.25rem 0.7rem;
+          border-radius: 999px;
+          background: rgba(200,240,74,0.1);
+          color: var(--accent);
+          border: 1px solid rgba(200,240,74,0.2);
+        }
+        @media (max-width: 640px) {
+          .sv-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1.5rem;
+          }
+          .sv-side { align-self: flex-start; }
+        }
+      `}</style>
+
       <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 500, marginBottom: '1rem' }}>
         Servicios
       </p>
-      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '1rem' }}>
-        Lo que puedo hacer<br />por ti
+      <h2 data-letters style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '1rem' }}>
+        Servicios de IA<br />para negocios
       </h2>
       <p style={{ color: 'rgba(245,242,236,0.6)', maxWidth: '500px', marginBottom: '3rem' }}>
-        Desde una computadora que no enciende hasta un sistema que automatiza toda tu operación.
+        IA aplicada a problemas reales. Chico a chico, de Linares para acá.
       </p>
 
       <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '1px',
-        border: '1px solid var(--border)',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        background: 'var(--border)',
+        display: 'flex', flexDirection: 'column', gap: '2.5rem',
       }}>
-        {services.map((s) => (
-          <ServiceCard key={s.title} {...s} />
+        {services.map((s, i) => (
+          <ServiceRow key={s.title} index={`0${i + 1}`} revealIndex={i} {...s} />
         ))}
       </div>
     </section>
   )
 }
 
-function ServiceCard({ icon, title, desc, badge }: typeof services[0]) {
+function ServiceRow({ index, title, desc, badge, Icon, revealIndex }: Service & { index: string; revealIndex: number }) {
+  const [hovered, setHovered] = useState(false)
+
   return (
     <div
-      style={{ background: '#111', padding: '2rem', transition: 'background 0.2s' }}
-      onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = '#181818')}
-      onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = '#111')}
+      data-reveal
+      data-reveal-index={revealIndex}
+      className={`sv-row${hovered ? ' is-active' : ''}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <div style={{
-        width: 44, height: 44,
-        border: '1px solid rgba(200,240,74,0.3)', borderRadius: 10,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        marginBottom: '1.25rem', fontSize: '1.2rem',
-      }}>
-        {icon}
+      <div className="sv-lead">
+        <span className="sv-index">{index}</span>
+        <span className="sv-iconbox">
+          <Icon size={24} weight="Outline" color="var(--accent)" />
+        </span>
       </div>
-      <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.6rem' }}>
-        {title}
-      </h3>
-      <p style={{ fontSize: '0.875rem', color: 'rgba(245,242,236,0.55)', lineHeight: 1.6 }}>
-        {desc}
-      </p>
-      <span style={{
-        display: 'inline-block', marginTop: '1rem',
-        fontSize: '0.72rem', letterSpacing: '0.06em', textTransform: 'uppercase',
-        padding: '0.25rem 0.7rem', borderRadius: '999px',
-        background: 'rgba(200,240,74,0.1)', color: 'var(--accent)',
-        border: '1px solid rgba(200,240,74,0.2)',
-      }}>
-        {badge}
-      </span>
+      <div className="sv-content">
+        <h3 className="sv-title">{title}</h3>
+        <p className="sv-desc">{desc}</p>
+      </div>
+      <div className="sv-side">
+        <span className="sv-badge">{badge}</span>
+      </div>
     </div>
   )
 }

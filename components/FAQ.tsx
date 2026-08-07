@@ -4,24 +4,28 @@ import { useState } from 'react'
 
 const faqs = [
   {
-    q: '¿Vienes a domicilio en Linares?',
-    a: 'Sí, atiendo a domicilio en Linares y municipios cercanos. También puedes traer tu equipo si lo prefieres.',
+    q: '¿Y si se rompe, quién lo arregla?',
+    a: 'Yo. No vendí el sistema y desaparecí: doy soporte directo por WhatsApp y, si algo falla, lo reviso yo mismo. Para mí un bug no es "normal": es una falla que hay que encontrar de raíz.',
   },
   {
-    q: '¿Cuánto tarda una reparación?',
-    a: 'Depende del problema, pero la mayoría de reparaciones comunes se resuelven el mismo día o en 48 horas. Te doy un estimado desde el diagnóstico.',
+    q: '¿Tengo que cambiar mis computadoras?',
+    a: 'No. La mayoría de mis sistemas corren en lo que ya tienes. Si necesitas algo más (más memoria, una computadora específica), te lo digo antes de empezar, con el costo claro.',
   },
   {
-    q: '¿El diagnóstico realmente es gratis?',
-    a: 'Sí, completamente gratis y sin compromiso. Si no hay solución que te convenga, no pagas nada.',
+    q: '¿Mis datos salen de Linares?',
+    a: 'Depende. Para información sensible (despachos, inventarios, inventos, datos de clientes) uso IA local: corre en tu propia computadora y nada viaja a la nube. Para tareas donde conviene un modelo pesado, usamos IA en la nube. Tú sabes en cada caso dónde vive tu información.',
   },
   {
-    q: '¿Trabajas con empresas o solo con personas?',
-    a: 'Con ambos. Atiendo desde una computadora personal hasta negocios que necesitan automatizar procesos completos.',
+    q: '¿Y si te vas de Linares?',
+    a: 'Vivo acá, mis clientes están acá. Pero además el sistema es tuyo: el código queda documentado y puedes contratar a otro dev si un día quieres. No te amarro a mí.',
   },
   {
-    q: '¿Qué pasa si el problema regresa después de la reparación?',
-    a: 'Todo mi trabajo tiene garantía. Si el mismo problema regresa, lo reviso sin costo adicional.',
+    q: '¿Cuánto cuesta un proyecto de IA?',
+    a: 'Depende del alcance, pero siempre te doy una cotización clara ANTES de empezar, sin letras chiquitas. Hay proyectos desde una página web hasta sistemas completos. Y te digo con honestidad si la IA no es la solución — porque a veces no lo es.',
+  },
+  {
+    q: '¿Necesito saber de tecnología?',
+    a: 'Para nada. Tú conoces tu negocio, yo conozco la tecnología. Te explico cada decisión en español, no en inglés técnico. Y si algo no te hace sentido, lo repito hasta que sí.',
   },
 ]
 
@@ -33,7 +37,7 @@ export default function FAQ() {
       <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 500, marginBottom: '1rem' }}>
         Preguntas frecuentes
       </p>
-      <h2 style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '3rem' }}>
+      <h2 data-letters style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '3rem' }}>
         Lo que la gente<br />suele preguntar
       </h2>
 

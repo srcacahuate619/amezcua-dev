@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 const WA_LINK =
-  'https://wa.me/528211110863?text=Hola%20Johan%2C%20quiero%20un%20diagn%C3%B3stico%20gratis%20para%20mi%20equipo%20o%20negocio'
+  'https://wa.me/528211110863?text=Hola%20Johan%2C%20quiero%20automatizar%20un%20proceso%20de%20mi%20negocio'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -33,7 +33,7 @@ export default function Navbar() {
 
       <div style={{ display: 'flex', gap: '2rem', fontSize: '0.875rem', color: 'rgba(245,242,236,0.6)' }}
            className="nav-links">
-        {[['#servicios', 'Servicios'], ['#proyectos', 'Proyectos'], ['#contacto', 'Contacto']].map(([href, label]) => (
+        {[['#servicios', 'Servicios'], ['#proyectos', 'Proyectos'], ['#publicaciones', 'Publicaciones'], ['#contacto', 'Contacto']].map(([href, label]) => (
           <a key={href} href={href} style={{ transition: 'color 0.2s' }}
              onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(245,242,236,0.6)')}>
