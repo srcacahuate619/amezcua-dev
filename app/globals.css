@@ -74,6 +74,19 @@ a {
 }
 
 /*
+ * Protección de wrap para títulos animados por letra (LetterMotion).
+ * LetterMotion envuelve cada letra en span[data-ch] y agrupa las letras por
+ * palabra en spans contenedores con `white-space: nowrap`. Por las dudas,
+ * forzamos `word-break: keep-all` y `overflow-wrap: normal` en [data-letters]
+ * para que el navegador nunca opte por la heurística de romper por carácter.
+ * Si una palabra NO cabe, se desborda — preferimos eso a trocearla.
+ */
+[data-letters] {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+/*
  * Scroll-reveal animations · IntersectionObserver-driven
  * Elements marked with [data-reveal] start at opacity 0 + translateY and
  * transition to visible when ScrollReveal sets data-reveal-state="visible".

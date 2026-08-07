@@ -37,14 +37,45 @@ export default function LetterMotion() {
           const text = node.nodeValue ?? ''
           if (!text.trim()) return
           const frag = document.createDocumentFragment()
-          for (const ch of text) {
-            const span = document.createElement('span')
-            span.textContent = ch === ' ' ? '\u00A0' : ch
-            span.style.display = 'inline-block'
-            span.style.willChange = 'transform, opacity'
-            span.dataset.ch = 'true'
-            frag.appendChild(span)
+
+          // Agrupa las letras por palabra en un span contenedor con
+          // `display: inline-block` + `white-space: nowrap`. El navegador
+          // puede quebrar ENTRE palabras (entre contenedores) pero nunca
+          // DENTRO de una palabra. Esto evita que en viewport angosto el
+          // wrap rompa "mano" en "m / ano" — la palabra queda indivisible.
+          // Los spans de cada letra suelta siguen animándose igual (GSAP
+          // opera sobre `span[data-ch]` sin importar su contenedor padre).
+          let wordSpan: HTMLSpanElement | null = null
+          const openWord = () => {
+            wordSpan = document.createElement('span')
+            wordSpan.style.display = 'inline-block'
+            wordSpan.style.whiteSpace = 'nowrap'
           }
+          const closeWord = () => {
+            if (wordSpan) {
+              frag.appendChild(wordSpan)
+              wordSpan = null
+            }
+          }
+
+          for (const ch of text) {
+            if (ch === ' ' || ch === '\u00A0') {
+              // El espacio cierra la palabra actual y queda como un
+              // separador rompible en el flujo (texto plano, no inline-block).
+              closeWord()
+              frag.appendChild(document.createTextNode('\u00A0'))
+            } else {
+              if (!wordSpan) openWord()
+              const current = wordSpan!
+              const letterSpan = document.createElement('span')
+              letterSpan.textContent = ch
+              letterSpan.style.display = 'inline-block'
+              letterSpan.style.willChange = 'transform, opacity'
+              letterSpan.dataset.ch = 'true'
+              current.appendChild(letterSpan)
+            }
+          }
+          closeWord()
           node.parentNode?.replaceChild(frag, node)
         })
 
