@@ -61,6 +61,19 @@ a {
 .animate-fade-in    { animation: fadeIn 1s 0.2s ease both; }
 
 /*
+ * Saltos de línea responsivos.
+ * <br className="br-desktop" /> actúa como salto de línea en pantallas anchas
+ * (>=641px, donde el diseño cabe en 3 renglones artísticos) y desaparece en
+ * mobile, donde el texto fluye natural y el navegador envuelve por palabra
+ * completa — nunca en medio de un carácter. Resuelve roturas tipo
+ * "m / ano" o "neg / ocio" vistas en viewport angosto.
+ */
+.br-desktop { display: block; }
+@media (max-width: 640px) {
+  .br-desktop { display: none; }
+}
+
+/*
  * Scroll-reveal animations · IntersectionObserver-driven
  * Elements marked with [data-reveal] start at opacity 0 + translateY and
  * transition to visible when ScrollReveal sets data-reveal-state="visible".

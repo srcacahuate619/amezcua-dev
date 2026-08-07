@@ -141,7 +141,7 @@ export function Contact() {
       }}>
         <div>
           <h2 data-letters style={{ fontFamily: 'var(--font-head)', fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 800, letterSpacing: '-0.03em' }}>
-            ¿Listo para<br />automatizar tu negocio?
+            ¿Listo para<br className="br-desktop" />automatizar tu negocio?
           </h2>
           <p style={{ color: 'rgba(245,242,236,0.55)', marginTop: '0.5rem', fontSize: '0.9rem' }}>
             Cuéntame qué proceso te quita más tiempo. Te digo con honestidad si la IA lo resuelve y cuánto cuesta.

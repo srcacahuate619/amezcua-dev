@@ -33,9 +33,9 @@ export default function Hero() {
         letterSpacing: '-0.04em',
         marginBottom: '1rem',
       }}>
-        IA para tu negocio.<br />
-        Lo que hoy es a mano,<br />
-        <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>mañana lo hace un <br />sistema por ti.</em>
+        IA para tu negocio.<br className="br-desktop" />
+        Lo que hoy es a mano,<br className="br-desktop" />
+        <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>mañana lo hace un <br className="br-desktop" />sistema por ti.</em>
       </h1>
 
       {/* Hook line */}
